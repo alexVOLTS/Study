@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main ()
+int main(void)
 {
     char name[10];
     char surname[10];
-    printf ("Напишите ваше имя:");
-    scanf ("%s", name);
-    printf ("\nНапишите вашу фамилию:");
-    scanf ("%s", surname);
-    printf ("\nВаше имя: %s %s", surname, name);
+    printf("Input your name:");
+    scanf("%s", name);
+    printf("\nInput your surname:");
+    scanf("%s", surname);
+    printf("\nYour name is %s %s", surname, name);
+    return 0;
 }
