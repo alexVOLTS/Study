@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <locale.h>
 
-int two ()
+int two (void)
 {
-    printf ("\n two");
+    printf("\n two");
 }
 
-int one_three ()
+int one_three (void)
 {
-    printf ("\n one");
+    printf("\n one");
     two ();
-    printf ("\n three");
+    printf("\n three");
 }
 
-int main ()
+int main (void)
 {
-    printf ("Начинаем:");
+    printf("Begin:");
     one_three();
-    printf ("\n порядок!");
+    printf("\n done!");
 }

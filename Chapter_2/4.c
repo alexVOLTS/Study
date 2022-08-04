@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <locale.h>
 
-int jolly()
+int jolly(void)
 {
-    printf ("\nОн веселый молодец!");
+    printf("\nHe's funny guy!");
 }
-int deny ()
+int deny(void)
 {
-    printf ("\nНикто не может это отрицать!");
+    printf("\nNo one can deny this!");
 }
 
-int main()
+int main(void)
 {
     jolly();
     jolly();

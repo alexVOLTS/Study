@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main()
+int main(void)
 {
     int age = 24;
     int age_days = age * 365;

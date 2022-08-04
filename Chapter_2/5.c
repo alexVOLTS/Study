@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 
-int br ()
+int br(void)
 {
     char br[10] = "Brasil \t";
     char ru[10] = "Russia \t";
@@ -9,7 +9,7 @@ int br ()
     printf ("%s", ru);
 }
 
-int ic()
+int ic(void)
 {
     char in[10] = "India \t";
     char ch[10] = "China \t";
@@ -18,12 +18,13 @@ int ic()
     
 }
 
-int main()
+int main(void)
 {
     br();
     ic();
-    printf ("\n");
+    printf("\n");
     ic();
-    printf ("\n");
+    printf("\n");
     br();
+    return 0;
 }

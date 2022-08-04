@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main()
+int main(void)
 {
-    printf ("Шабалин Александр");
-    printf ("\nАлександр" "\nShabalin");
-    printf ("\nШабалин");
-    printf ("\tАлександр");
+    printf("Shabalin Alexandr");
+    printf("\nAlexandr" "\nShabalin");
+    printf("\nShabalin");
+    printf("\tAlexandr");
     return 0;
 }

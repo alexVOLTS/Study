@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main()
+int main(void)
 {
-    printf ("Имя: Alexandr \t Адрес: Звездная 70");
+    printf("Имя: Alexandr \t Адрес: Somewhere in the World 1664");
 }

@@ -3,18 +3,18 @@
 
 int smile ()
 {
-    char smile[] = "Улыбайся!";
+    char smile[] = "Smile!";
     printf ("%s", smile);
 }
 
-int main ()
+int main (void)
 {
     smile();
     smile();
     smile();
-    printf ("\n");
+    printf("\n");
     smile();
     smile();
-    printf ("\n");
+    printf("\n");
     smile();
 }
