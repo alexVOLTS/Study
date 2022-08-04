@@ -12,7 +12,6 @@ int main(void)
 
     printf("ASCII code for %d is %c", ascii, ascii);
     getchar();
-    getchar();
 
     return 0;
 

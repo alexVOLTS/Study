@@ -5,20 +5,20 @@
 
 int main(void)
 {
-    float growth;
-    printf ("Введите рост в дюймах: \t");
-    scanf ("%f", &growth);
-    float cm = growth*2.54;
-    printf ("\nВаш рост В дюймаx: %f",growth);
-    printf ("\nВаш рост В сантиметрах: %f", cm);
+    float height;
+    printf("Input your height in inches: \t");
+    scanf("%f", &height);
+    float cm = height * 2.54;
+    printf("\nYour height in inches: %f", height);
+    printf("\nYour height in cantimeters: %f", cm);
     
-        if (cm > 180)
-        {
-            printf ("\nЕбать ты Майл Джордан monkaOMEGA");
-        }
-        else
-        {
-            printf ("\nЕбать ты ЭЛЬДАР ДЖАРАХОВ KEKW");
-        }
+    if (cm > 180)
+    {
+        printf("\nOMG You're Michael Jordan monkaOMEGA");
+    }
+    else
+    {
+        printf("\nLUL You're Eldar Jarahov KEKW");
+    }
     
 }

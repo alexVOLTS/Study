@@ -5,5 +5,5 @@
 
 int main(void)
 {
-    printf ("\a Напуганная внезапным звуком, Вика вскрикнула: \n \"Во имя всех звезд, что это было!\""); // \a - предупредительный звук (стандарт ANSI C)
+    printf ("\a Scared by random sound Vika screamed: \n \"In the name of all the stars what it was!\""); // \a - sound (ANSI C Standard)
 }

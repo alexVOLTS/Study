@@ -6,9 +6,9 @@
 int main(void)
 {
     int year;
-    printf ("Введите возраст в годах:\t");
-    scanf ("%d", &year);
-    int sec = year*3.156E7;
-    printf ("\n Возраст в секундaх: %d seconds", sec);
+    printf("Input your age in years:\t");
+    scanf("%d", &year);
+    int sec = year * 3.156E7;
+    printf("\n Your age in seconds: %d seconds", sec);
     return 0;
 }
