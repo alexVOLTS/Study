@@ -14,7 +14,7 @@ int input()
     return cm;
 }
 
-int cycle()
+int cycle(void)
 {
     while (cm > 0)
     {

@@ -12,7 +12,7 @@ int main (void)
     scanf("%d", &num);
     while (count++ < num)
     {
-        sum = sum + count*count;
+        sum = sum + count * count;
         printf("sum = %i\n", sum);
     }
     return 0;

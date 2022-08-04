@@ -2,15 +2,15 @@
 #include <locale.h>
 #include <float.h>
 
-int main()
+int main(void)
 {
     int number;
-    printf ("Введите ЦЕЛОЕ число: ");
-    scanf ("%d", &number);
+    printf("Input INT number: ");
+    scanf("%d", &number);
     
     for (int i = 0; i < 10; i++)
     {
-        printf ("\t%d", number);
+        printf("\t%d", number);
         number++;
     }
     return 0;

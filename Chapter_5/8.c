@@ -19,7 +19,7 @@ int first ()
     return y;
 }
 
-int cycle ()
+int cycle (void)
 {
     while (y > 0)
     {

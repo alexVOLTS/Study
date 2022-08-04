@@ -6,13 +6,13 @@
 const int week = 7;
 float days;
 
-int input ()
+int input (void)
 {
     printf("\nInput number of days\t");
     scanf("%f", &days);
 }
 
-int cycle ()
+int cycle (void)
 {
     while (days > 0)
     {

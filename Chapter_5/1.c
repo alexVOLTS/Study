@@ -8,33 +8,31 @@ float mins;
 
 int wtf ()
 {
-    printf ("\nВведите время в минутах: ");
-    scanf ("%f", &mins);
+    printf("\nInput time in minutes:");
+    scanf("%f", &mins);
     return mins;
 }
 
-int cycle ()
+int cycle (void)
 {
     while (mins > 0)
     {
-        float time1 = mins/X;
-        printf ("\nВремя в часах:%.3f", time1);
+        float time1 = mins / X;
+        printf("\nTime in hours is %.3f", time1);
         int a = (int) time1;
         float b = time1 - a;
-        printf ("\nДробная часть равна %f", b);
         float c = (int) (b * 60);
-        printf ("\nПереводим дробную часть в минуты: %.0f", c);
-        printf ("\nВремя в часах и минутах: %d часов %.0f минут(ы)", a, c);
+        printf("\nTime in hourse and minutes: %d hours %.0f minutes", a, c);
         wtf ();
     }
-    printf ("\n\tТы ебо-бо что ли?!");
+    printf("\n\tDAFAQ?? Are you braindead?!");
 }
 
-int main()
+int main(void)
 {
-    wtf ();
-    cycle ();
-    printf ("\n\tПопробуешь еще раз, шутник?");
+    wtf();
+    cycle();
+    printf("\n\tWould you like to try again clown?");
     wtf();
     return 0;
 }
