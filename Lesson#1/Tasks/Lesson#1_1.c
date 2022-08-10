@@ -9,7 +9,7 @@ unsigned int x;
 unsigned int operation; 
 
 
-int first()
+int first(void)
 {
     printf("Input int number:\n");
     scanf("%d", &x);
@@ -24,22 +24,22 @@ int first()
     return 0;
 }
 
-int second()
+int second(void)
 {
     printf("\nInput int number:\n");
     scanf("%d", &x);
-    if (x & 2) // I've used logical operation AND to check last bit of number x and number 2. Even numbers have 0 in their first bit
+    if (x & 1) // I've used logical operation AND to check last bit of number x and number 2. Even numbers have 0 in their first bit
     {
-        printf("\neven");
+        printf("\nodd");
     }
     else
     {
-        printf("\nodd"); 
+        printf("\neven");
     }
     return 0;
 }
 
-int third()
+int third(void)
 {
     printf("\nInput int number:\n");
     scanf("%d", &x);
