@@ -5,7 +5,6 @@
 
 int main(void)
 {
-    
     char ascii;
     printf("Enter ASCII code:\n");
     scanf("%d", &ascii);
@@ -14,5 +13,4 @@ int main(void)
     getchar();
 
     return 0;
-
 }
