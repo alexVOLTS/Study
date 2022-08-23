@@ -3,7 +3,7 @@
 #include <float.h>
 
 
-int main (void)
+int main(void)
 { 
     int count, sum, num;
     count = 0; 
@@ -12,7 +12,7 @@ int main (void)
     scanf("%d", &num);
     while (count++ < num)
     {
-        sum = sum + count; 
+        sum += count; 
         printf("sum = %d\n", sum); 
     }
     return 0;
