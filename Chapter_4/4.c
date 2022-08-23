@@ -1,14 +1,19 @@
 #include <stdio.h>
 
+#define FOOT    12.0f
+
 int main(void)
 {
-    float rost;
+    float height;
     char name[15];
-    printf("Input your height in inches: ");
+
+    printf("\nInput your height in inches: ");
     scanf("%f", &rost);
     printf("\nInput your name: ");
     scanf("%s", &name);
-    float foot = rost / 12;
+
+    float foot = height / FOOT;
+
     printf("\n%s your height is %.2f inches", name, foot);
     return 0;
 }
