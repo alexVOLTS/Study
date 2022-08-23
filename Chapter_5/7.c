@@ -4,7 +4,7 @@
 
 double x;
 
-int calculate ()
+int calculate(void)
 {
     printf("\nInput number with double type: ");
     scanf("%lf", &x);
@@ -12,7 +12,7 @@ int calculate ()
     return x;
 }
 
-int main (void)
+int main(void)
 {
     calculate();
     printf("\nResult: %f", x);
