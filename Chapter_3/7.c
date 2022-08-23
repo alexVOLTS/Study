@@ -3,7 +3,8 @@
 #include <limits.h>
 #include <float.h>
 
-#define INCH_TO_CM    2.54f
+#define INCH_TO_CM       2.54f
+#define NORMAL_HEIGHT    180u
 
 int main(void)
 {
@@ -17,7 +18,7 @@ int main(void)
     printf("\nYour height in inches: %f", height);
     printf("\nYour height in cantimeters: %f", cm);
     
-    if (cm > 180)
+    if (cm > NORMAL_HEIGHT)
     {
         printf("\nOMG You're Michael Jordan monkaOMEGA");
     }
