@@ -5,21 +5,21 @@
 int x;
 int y;
 
-int second()
+int second(void)
 {
     printf("\nInput integer number which will be a second operand: ");
     scanf("%d", &x);
     return x;
 }
 
-int first ()
+int first(void)
 {
     printf("\nInput first operand (<=0 to exit from program): ");
     scanf("%d", &y);
     return y;
 }
 
-int cycle (void)
+int cycle(void)
 {
     while (y > 0)
     {
@@ -30,7 +30,7 @@ int cycle (void)
     printf("\nDone");
 }
 
-int main (void)
+int main(void)
 {
     second();
     first();
