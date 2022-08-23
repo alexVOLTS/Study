@@ -6,14 +6,14 @@
 
 float mins;
 
-int wtf ()
+int wtf()
 {
     printf("\nInput time in minutes:");
     scanf("%f", &mins);
     return mins;
 }
 
-int cycle (void)
+int cycle(void)
 {
     while (mins > 0)
     {
