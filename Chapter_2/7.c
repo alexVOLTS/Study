@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <locale.h>
 
-int smile (void)
+int smile(void)
 {
     char smile[] = "Smile!";
     printf ("%s", smile);
 }
 
-int main (void)
+int main(void)
 {
     smile();
     smile();
