@@ -2,7 +2,7 @@
 #include <locale.h>
 #include <float.h>
 
-#define X 60;
+#define MINS_IN_HOUR    60;
 
 float mins;
 
@@ -17,7 +17,7 @@ int cycle (void)
 {
     while (mins > 0)
     {
-        float time1 = mins / X;
+        float time1 = mins / MINS_IN_HOUR;
         printf("\nTime in hours is %.3f", time1);
         int a = (int) time1;
         float b = time1 - a;
