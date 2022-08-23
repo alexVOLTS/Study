@@ -2,12 +2,12 @@
 #include <locale.h>
 #include <float.h>
 
-#define foot 0.0328084;
-#define inch 0.393701;
+#define CM_IN_FOOT     0.0328084f
+#define CM_IN_INCH     0.393701f
 
 float cm;
 
-int input()
+int input(void)
 {
     printf("\nInput height in centimeters:\t");
     scanf("%f", &cm); 
@@ -18,10 +18,10 @@ int cycle(void)
 {
     while (cm > 0)
     {
-        float x = cm * foot;
-        float y = cm * inch;
+        float x = cm * CM_IN_FOOT;
+        float y = cm * CM_IN_INCH;
         printf("\n%.1f centimeters = %.0f foots, %.1f inches (<=0 to exit from the program)", cm, x, y);
-        input ();
+        input();
     }
     printf ("Program ends now.");
 }
