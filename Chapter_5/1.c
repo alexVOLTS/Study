@@ -6,7 +6,7 @@
 
 float mins;
 
-int wtf()
+int wtf(void)
 {
     printf("\nInput time in minutes:");
     scanf("%f", &mins);
