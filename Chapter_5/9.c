@@ -11,7 +11,7 @@ const double f1 = 5.0 / 9.0;
 const double f2 = 32.0;
 
 
-int Temperatures()
+int Temperatures(void)
 {
     double x = f1 * (temp - f2);
     double y = x + kelvin;
@@ -19,14 +19,14 @@ int Temperatures()
     printf("\nTemperature Kelvin = %.2lf", y);
 }
 
-int Input ()
+int Input(void)
 {
     printf("\nInput fahrenheit temperature: ");
     scanfresult = scanf("%lf", &temp);
     return scanfresult;
 }
 
-int main ()
+int main(void)
 {
     Input();
     while (scanfresult == 1)
