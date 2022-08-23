@@ -2,7 +2,7 @@
 #include <locale.h>
 #include <float.h>
 
-#define MINS_IN_HOUR    60;
+#define MINS_IN_HOUR    60u;
 
 float mins;
 
@@ -21,7 +21,7 @@ int cycle(void)
         printf("\nTime in hours is %.3f", time1);
         int a = (int) time1;
         float b = time1 - a;
-        float c = (int) (b * 60);
+        float c = (int) (b * MINS_IN_HOUR);
         printf("\nTime in hourse and minutes: %d hours %.0f minutes", a, c);
         wtf ();
     }
