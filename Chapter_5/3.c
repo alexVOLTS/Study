@@ -3,7 +3,7 @@
 #include <float.h>
 
 
-const int week = 7;
+const int days_in_week = 7;
 float days;
 
 int input(void)
@@ -16,10 +16,10 @@ int cycle(void)
 {
     while (days > 0)
     {
-        float quantity = days / week;
+        float quantity = days / days_in_week;
         float x = (int) quantity;
         float y = quantity - x;
-        float numb = y * week;
+        float numb = y * days_in_week;
         printf("\n%.0f days is %.0f weeks and %.0f days", days, x, numb);
         input();
     }
