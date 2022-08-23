@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include <locale.h>
 
-int two (void)
+int two(void)
 {
     printf("\n two");
 }
 
-int one_three (void)
+int one_three(void)
 {
     printf("\n one");
     two ();
     printf("\n three");
 }
 
-int main (void)
+int main(void)
 {
     printf("Begin:");
     one_three();
     printf("\n done!");
 }
+
