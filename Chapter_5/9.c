@@ -7,13 +7,13 @@ double y;
 double temp;
 int scanfresult;
 const double kelvin = 273.16;
-const double f1 = 5.0 / 9.0;
-const double f2 = 32.0;
+const double celsius = 5.0 / 9.0;
+const double another_celsius = 32.0;
 
 
 int Temperatures(void)
 {
-    double x = f1 * (temp - f2);
+    double x = celsius * (temp - another_celsius);
     double y = x + kelvin;
     printf("\nTemperature Celsium = %.2lf", x);
     printf("\nTemperature Kelvin = %.2lf", y);
