@@ -22,7 +22,7 @@ int cycle(void)
         int a = (int) time1;
         float b = time1 - a;
         float c = (int) (b * MINS_IN_HOUR);
-        printf("\nTime in hourse and minutes: %d hours %.0f minutes", a, c);
+        printf("\nTime in hourses and minutes: %d hours %.0f minutes", a, c);
         wtf ();
     }
     printf("\n\tDAFAQ?? Are you braindead?!");
