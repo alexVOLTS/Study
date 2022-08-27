@@ -2,7 +2,6 @@
 #include <locale.h>
 #include <float.h>
 
-
 const int days_in_week = 7;
 float days;
 
@@ -20,6 +19,7 @@ int cycle(void)
         float x = (int) quantity;
         float y = quantity - x;
         float numb = y * days_in_week;
+
         printf("\n%.0f days is %.0f weeks and %.0f days", days, x, numb);
         input();
     }

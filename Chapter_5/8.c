@@ -24,6 +24,7 @@ int cycle(void)
     while (y > 0)
     {
         int z = y % x;
+
         printf("\n%d on %d equals %d", y, x, z);
         first();
     }

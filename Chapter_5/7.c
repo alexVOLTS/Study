@@ -8,6 +8,7 @@ int calculate(void)
 {
     printf("\nInput number with double type: ");
     scanf("%lf", &x);
+
     x = x * x * x;
     return x;
 }

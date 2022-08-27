@@ -20,6 +20,7 @@ int cycle(void)
     {
         float x = cm * CM_IN_FOOT;
         float y = cm * CM_IN_INCH;
+
         printf("\n%.1f centimeters = %.0f foots, %.1f inches (<=0 to exit from the program)", cm, x, y);
         input();
     }

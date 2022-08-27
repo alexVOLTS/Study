@@ -19,9 +19,11 @@ int cycle(void)
     {
         float time1 = mins / MINS_IN_HOUR;
         printf("\nTime in hours is %.3f", time1);
+
         int a = (int) time1;
         float b = time1 - a;
         float c = (int) (b * MINS_IN_HOUR);
+
         printf("\nTime in hourses and minutes: %d hours %.0f minutes", a, c);
         wtf ();
     }
