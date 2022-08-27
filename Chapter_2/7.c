@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 
-int smile(void)
+void smile(void)
 {
     char smile[] = "Smile!";
     printf ("%s", smile);
