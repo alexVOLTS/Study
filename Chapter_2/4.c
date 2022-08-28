@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <locale.h>
 
-int jolly(void)
+void jolly(void)
 {
     printf("\nHe's funny guy!");
 }
-int deny(void)
+void deny(void)
 {
     printf("\nNo one can deny this!");
 }
