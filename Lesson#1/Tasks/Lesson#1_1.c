@@ -8,11 +8,15 @@
 unsigned int x;
 unsigned int operation; 
 
+int input(void)
+{
+    printf("\nInput int number:\n");
+    scanf("%d", &x);
+}
 
 int first(void)
 {
-    printf("Input int number:\n");
-    scanf("%d", &x);
+    input();
     if (x % TWO == 0)
     {
         printf("\neven");
@@ -21,13 +25,11 @@ int first(void)
     {
         printf("\nodd"); 
     }
-    return 0;
 }
 
 int second(void)
 {
-    printf("\nInput int number:\n");
-    scanf("%d", &x);
+    input();
     if (IS_ODD(x))
     {
         printf("\nodd");
@@ -36,13 +38,11 @@ int second(void)
     {
         printf("\neven");
     }
-    return 0;
 }
 
 int third(void)
 {
-    printf("\nInput int number:\n");
-    scanf("%d", &x);
+    input();
     operation = x % TWO;
     bool result = operation == 0;
     if (result)
@@ -53,7 +53,6 @@ int third(void)
     {
         printf("\nodd"); 
     }
-    return 0;
 }
 
 int main(void)
@@ -61,4 +60,5 @@ int main(void)
     first();
     second();
     third();
+    return 0;
 }
