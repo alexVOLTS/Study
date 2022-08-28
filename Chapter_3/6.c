@@ -3,8 +3,8 @@
 #include <limits.h>
 #include <float.h>
 
-#define WEIGHT     950.0f
-#define MOLECUL    3.0E-23f
+#define WEIGHT               950.0f
+#define MOLECULS_IN_WATER    3.0E-23
 
 int main(void)
 {
@@ -13,7 +13,7 @@ int main(void)
     printf("Input water volume in quarts:\t");
     scanf("%f", &quart);
 
-    float number = (quart * WEIGHT) / MOLECUL;
+    float number = (quart * WEIGHT) / MOLECULS_IN_WATER;
 
     printf("\n Water molecules number: %f", number);
     return 0;
