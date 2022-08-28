@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <float.h>
 #include <stdbool.h>
 
