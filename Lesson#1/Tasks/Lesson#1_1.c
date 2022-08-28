@@ -8,13 +8,13 @@
 unsigned int x;
 unsigned int operation; 
 
-int input(void)
+void input(void)
 {
     printf("\nInput int number:\n");
     scanf("%d", &x);
 }
 
-int first(void)
+void first(void)
 {
     input();
     if (x % TWO == 0)
@@ -27,7 +27,7 @@ int first(void)
     }
 }
 
-int second(void)
+void second(void)
 {
     input();
     if (IS_ODD(x))
@@ -39,8 +39,7 @@ int second(void)
         printf("\neven");
     }
 }
-
-int third(void)
+void third(void)
 {
     input();
     operation = x % TWO;
