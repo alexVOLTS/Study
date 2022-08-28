@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <float.h>
 #include <stdbool.h>
 #include <string.h>
@@ -21,7 +20,7 @@ int translator(char a)
     return -1;
 }
 
-int converter(char number[])
+int converter(char *number)
 {
     int result = 0;
     
@@ -35,17 +34,17 @@ int converter(char number[])
             
             if (symbol_1 >= symbol_2)
             {
-                result = result + symbol_1;
+                result += symbol_1;
             }
             else
             {
-                result = result + symbol_2 - symbol_1;
+                result += symbol_2 - symbol_1;
                 i++;
             }
         }
         else
         {
-            result = result + 1;
+            result++;
         }
     }
     return result;
