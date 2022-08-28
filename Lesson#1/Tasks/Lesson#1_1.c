@@ -3,7 +3,8 @@
 #include <float.h>
 #include <stdbool.h>
 
-#define y 2u
+#define TWO          2u
+#define IS_ODD(x)    (((x) & 1) == 1)
 
 unsigned int x;
 unsigned int operation; 
@@ -13,7 +14,7 @@ int first(void)
 {
     printf("Input int number:\n");
     scanf("%d", &x);
-    if (x % y == 0)
+    if (x % TWO == 0)
     {
         printf("\neven");
     }
@@ -28,7 +29,7 @@ int second(void)
 {
     printf("\nInput int number:\n");
     scanf("%d", &x);
-    if (x & 1) // I've used logical operation AND to check last bit of number x and number 2. Even numbers have 0 in their first bit
+    if (IS_ODD(x))
     {
         printf("\nodd");
     }
@@ -43,7 +44,7 @@ int third(void)
 {
     printf("\nInput int number:\n");
     scanf("%d", &x);
-    operation = x % y;
+    operation = x % TWO;
     bool result = operation == 0;
     if (result)
     {
@@ -61,5 +62,4 @@ int main(void)
     first();
     second();
     third();
-    return 0;
 }
