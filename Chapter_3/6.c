@@ -4,7 +4,7 @@
 #include <float.h>
 
 #define WEIGHT               950.0f
-#define MOLECULS_IN_WATER    3.0E-23
+#define MOLECULS_IN_WATER    3.0E-23(double)
 
 int main(void)
 {
