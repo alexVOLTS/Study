@@ -8,7 +8,7 @@ int main(void)
     char name[15];
 
     printf("\nInput your height in inches: ");
-    scanf("%f", &rost);
+    scanf("%f", &height);
     printf("\nInput your name: ");
     scanf("%s", &name);
 
