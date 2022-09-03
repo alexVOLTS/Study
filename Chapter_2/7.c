@@ -17,4 +17,5 @@ int main(void)
     smile();
     printf("\n");
     smile();
+    return 0;
 }

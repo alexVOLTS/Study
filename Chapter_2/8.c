@@ -18,5 +18,5 @@ int main(void)
     printf("Begin:");
     one_three();
     printf("\n done!");
+    return 0;
 }
-
