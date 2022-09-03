@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define FOOT    12.0f
+#define INCHES_IN_FOOT    12.0f
 
 int main(void)
 {
