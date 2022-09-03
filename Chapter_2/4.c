@@ -16,4 +16,5 @@ int main(void)
     jolly();
     jolly();
     deny();
+    return 0;
 }
