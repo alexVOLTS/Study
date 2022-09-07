@@ -4,23 +4,23 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define __SIZE    8
+#define SIZE    8
 
 int main(void)
 {
-    double first[__SIZE];
-    double second[__SIZE];
+    double first[SIZE];
+    double second[SIZE];
     double calculation = 0.00;
     
-    for(int x = 0; x < __SIZE; x++){
+    for(int x = 0; x < SIZE; x++) {
         printf("\nInput [%d] element of the first array: ", x);
         scanf("%lf", &first[x]);
     }
-    for(int y = 0; y < __SIZE; y++){
+    for(int y = 0; y < SIZE; y++) {
         printf("%lf   ", first[y]);
     }
         printf("\n");
-    for (int i = 0; i < __SIZE; i++){
+    for (int i = 0; i < SIZE; i++) {
         calculation = calculation + first[i];
         second[i] = calculation;
         printf("%lf   ", second[i]);
@@ -28,5 +28,6 @@ int main(void)
     
     printf("\n");
     printf("\n\t\t\t\tProgram ends here...");
+	
     return 0;
 }
