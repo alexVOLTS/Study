@@ -6,12 +6,14 @@
 
 int main(void)
 {
-    char number [8];
+    char number[8];
+	
     printf("\n Input eight number:");
     scanf("%s", &number);
     
-    for (int i = 0; i <= strlen(number); i++){
+    for (int i = 0; i <= strlen(number); i++) {
         printf("%c", number[strlen(number) - i]);
     }
+	
     return 0;
 }
