@@ -21,7 +21,10 @@ int main(void)
         deidra += deidras_deposit;
 	    counter++;
     } while (deidra <= dafna);
+	
     printf("\nDafna's deposit is %f", dafna);
     printf("\nDeidra's deposit is %f", deidra);
     printf("\nYears to Deidra have more BUCKS than Dafna do: %d", counter);
+	
+	return 0;
 }
