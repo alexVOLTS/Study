@@ -22,7 +22,7 @@ int main(void)
     int d = a;
     
     while (a < b) {
-        for (a; a <= b; a++){
+        for (a; a <= b; a++) {
             c = c + (a * a);
         }
         printf("\nSum of squares of int numbers from %d to %d is %d ", d, b, c);
