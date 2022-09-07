@@ -14,7 +14,8 @@ int main(void)
     scanf("%255s", &str);
     
     printf("\nReversed string: ");
-    for (int i = 0; i <= SIZE; i++){
+	
+    for (int i = 0; i <= SIZE; i++) {
         printf("%c", str[(SIZE - 1) - i]);
     }
     
