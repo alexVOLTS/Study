@@ -13,10 +13,13 @@ int main(void)
     int counter = 1;
     int friends = 5u;
     
-    do{
-        friends = (friends - counter)*DOUBLE;
+    do {
+        friends = (friends - counter) * DOUBLE;
         counter++;
+		
         printf("\nNumber of friends at the end of this week: %d", friends);
+		
     } while ((friends < (10 + DANBAR_NUMBER) && (friends < (DANBAR_NUMBER - 10)))); /* Approximation */
+	
     return 0;
 }
