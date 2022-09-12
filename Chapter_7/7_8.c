@@ -16,9 +16,7 @@
 #define RATE_THREE             10.00f
 #define RATE_FOUR              11.20f
 
-float rate;
-
-float choose()
+void choose(float *rate)
 {
     int choice;
     printf("\n******************************************************************");
@@ -29,33 +27,60 @@ float choose()
         
     switch(choice){
         case 1:
-            rate = RATE_ONE;
+            *rate = RATE_ONE;
             break;
         case 2:
-            rate = RATE_TWO;
+            *rate = RATE_TWO;
             break;
         case 3:
-            rate = RATE_THREE;
+            *rate = RATE_THREE;
             break;
         case 4:
-            rate = RATE_FOUR;
+            *rate = RATE_FOUR;
             break;
         case 5:
             printf("\nExiting from the program...");
-            rate = 0;
+            *rate = 0;
             break;
         default:
             printf("\nYou must choose from 5 different variants");
     }
-    return rate;
+}
+
+void calculation(int hours, float *rate)
+{
+    float charges, taxes, your_salary;
+    
+    if(hours <= STANDARD_WORKTIME) {
+        charges = *rate * (float)hours;
+    }
+    else {
+        charges = (*rate * STANDARD_WORKTIME) + ((float)hours - STANDARD_WORKTIME) * (*rate * SALARY_OVERTIME);
+    }
+        
+    if(charges < FIRST_TAX_BOUNDARY) {
+        taxes = charges * TAX_300_DOLLARS;
+    }
+    else if((charges > FIRST_TAX_BOUNDARY) && (charges < (FIRST_TAX_BOUNDARY + SECOND_TAX_BOUNDARY))) {
+        taxes = (FIRST_TAX_BOUNDARY * TAX_300_DOLLARS) + ((charges - FIRST_TAX_BOUNDARY) * TAX_450_DOLLARS);
+    }
+    else {
+        taxes = (FIRST_TAX_BOUNDARY * TAX_300_DOLLARS) + (SECOND_TAX_BOUNDARY * TAX_450_DOLLARS) + ((charges - (FIRST_TAX_BOUNDARY + SECOND_TAX_BOUNDARY)) * TAX_REST);
+    }
+        
+    your_salary = charges - taxes;
+        
+    printf("\nYour salary: %0.2f", charges);
+    printf("\nYour taxes: %0.2f", taxes);
+    printf("\nYou've earned: %0.2f bucks", your_salary);
 }
 
 int main(void)
 {
     int hours;
-    float charges, taxes, your_salary;
+    float rate;
 
-    choose();
+    choose(&rate);
     
     if(rate == 0){
         return 0;
@@ -64,35 +89,14 @@ int main(void)
     printf("\nInput number of work hours: \n\n");
     
     while((scanf("%d", &hours)) == 1){
-        if(hours <= STANDARD_WORKTIME){
-            charges = rate * (float)hours;
-        }
-        else{
-            charges = (rate * STANDARD_WORKTIME) + ((float)hours - STANDARD_WORKTIME) * (rate * SALARY_OVERTIME);
-        }
-        
-        if(charges < FIRST_TAX_BOUNDARY){
-            taxes = charges * TAX_300_DOLLARS;
-        }
-        else if((charges > FIRST_TAX_BOUNDARY) && (charges < (FIRST_TAX_BOUNDARY + SECOND_TAX_BOUNDARY))){
-            taxes = (FIRST_TAX_BOUNDARY * TAX_300_DOLLARS) + ((charges - FIRST_TAX_BOUNDARY) * TAX_450_DOLLARS);
-        }
-        else{
-            taxes = (FIRST_TAX_BOUNDARY * TAX_300_DOLLARS) + (SECOND_TAX_BOUNDARY * TAX_450_DOLLARS) + ((charges - (FIRST_TAX_BOUNDARY + SECOND_TAX_BOUNDARY)) * TAX_REST);
-        }
-        
-        your_salary = charges - taxes;
-        
-        printf("\nYour salary: %0.2f", charges);
-        printf("\nYour taxes: %0.2f", taxes);
-        printf("\nYou've earned: %0.2f bucks", your_salary);
-        printf("\n\nInput number of work hours: ");
-        
+        calculation(hours, &rate);
         choose(&rate);
-        if(rate == 0){
-        return 0;
+        
+        if(rate == 0) {
+            break;
         }
-        printf("\nInput number of work hours: \n\n");
+        
+        printf("\n\nInput number of work hours: ");
     }
     printf("\nExiting from the program...");
     
