@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define GRID_ASCII    35u
+#define '#'    35u
 
 int main(void)
 {
@@ -13,7 +13,7 @@ int main(void)
     int letter;
     character = getchar();
     
-    while(character != GRID_ASCII){
+    while(character != '#"){
         if(character == 'e'){
             letter = 1;
         }
