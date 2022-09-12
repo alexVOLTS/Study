@@ -64,7 +64,7 @@ bool get_weight(char choice, float *weight_artichokes, float *weight_beetroot, f
     return right;
 }
 
-void choose(float *weight_artichokes, float *weight_beetroot, float *weight_carrot, float *price, float *weight, int *counter, bool *purchase)
+void choose(float *weight_artichokes, float *weight_beetroot, float *weight_carrot, float *price, float *weight, bool *purchase)
 {
     char choice;
     bool right_choise = false;
@@ -84,6 +84,38 @@ void choose(float *weight_artichokes, float *weight_beetroot, float *weight_carr
     }
 }
 
+void calculation(float price, float *weight, float *sum)
+{
+    if (*weight <= 5.0f) {
+        *sum = DELIVERY_COST_FIVE + (price * *weight);
+    }
+    else if (*weight > 5.0f && *weight <= 20.0f) {
+        *sum = DELIVERY_COST_TWENTY + (price * *weight);
+    }
+    else {
+        *sum = DELIVERY_COST_TWENTY + (DELIVERY_ADDITIONNALY * (*weight - 20.0f)) + (price * *weight);
+    }
+    
+    printf("\nSubtotal: %.2f", *sum);
+}
+
+void calculation_discount(float *sum)
+{
+    float discount_total = 0.0f;
+    float total;
+    
+    if ((*sum) > DISCOUNT_BOUNDARY) {
+        total = (*sum) * DISCOUNT;
+        discount_total = (*sum) - total;
+        printf("\nDiscount is: %.2f$$$", discount_total);
+    }
+    else {
+        total = *sum;
+    }
+    
+    printf("\nSubtotal including discount: %.2f$$$", total);
+}
+
 int main(void)
 {
     bool purchase = false;
@@ -91,40 +123,19 @@ int main(void)
     float weight_beetroot = 0.0f;
     float weight_carrot = 0.0f;
     float price = 0.0f;
-    float sum, weight, discount_total;
-    float total = 0;
+    float sum, weight;
     
-     while (!purchase){
-            choose(&weight_artichokes, &weight_beetroot, &weight_carrot, &price, &weight, &counter, &purchase);
+     while (!purchase) {
+            choose(&weight_artichokes, &weight_beetroot, &weight_carrot, &price, &weight, &purchase);
         }
         
-        if (weight == 0.0f){
-            printf("\n\nYou haven't picked up any vegatables. Are you a vegetable?");
-            return 0;
-        }
+    if (weight == 0.0f) {
+        printf("\n\nYou haven't picked up any vegatables. Are you a vegetable?");
+        return 0;
+    }
         
-            if (weight <= 5.0f){
-                sum = DELIVERY_COST_FIVE + (price * weight);
-            }
-            else if (weight > 5.0f && weight <= 20.0f){
-                sum = DELIVERY_COST_TWENTY + (price * weight);
-            }
-            else {
-                sum = DELIVERY_COST_TWENTY + (DELIVERY_ADDITIONNALY * (weight - 20.0f)) + (price * weight);
-            }
-            
-            printf("\nSubtotal: %f", sum);
-            
-            if (sum > DISCOUNT_BOUNDARY){
-                total += sum * DISCOUNT;
-                discount_total = sum - total;
-            }
-            else {
-                total += sum;
-            }
-            
-            printf("\nDiscount is: %f$$$", discount_total);
-            printf("\nSubtotal including discount: %f$$$", total);
+    calculation(price, &weight, &sum);
+    calculation_discount(&sum);
     
     return 0;
 }
