@@ -4,10 +4,9 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define GRID_ASCII            35u
-#define EXCLAMATION_POINT     33u
-#define DOT                   46u
-#define DOT_TO_EXCLM_POINT    13u   
+#define '#'     35u
+#define '!'     33u
+#define '.'     46u
 
 int main(void)
 {
@@ -15,10 +14,10 @@ int main(void)
     int replacement = 0;
     character = getchar();
     
-    while(character != GRID_ASCII){
-        switch(character){
+    while(character != '#') {
+        switch(character) {
             case '.':
-                putchar(character - DOT_TO_EXCLM_POINT);
+                putchar(character - '.!');
                 replacement++;
                 break;
             case '!':
