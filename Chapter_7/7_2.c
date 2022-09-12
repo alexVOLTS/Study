@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define SIZE_OF_STRING    8u
-#define GRID_ASCII        35u
+#define '#'               35u
 
 int main(void)
 {
@@ -13,14 +13,14 @@ int main(void)
     int new_string;
     int symbols_counter = 0;
     
-    while((symbol = getchar()) != GRID_ASCII){
+    while((symbol = getchar()) != '#') {
         
         symbols_counter++;
         new_string = (symbols_counter % SIZE_OF_STRING);
         printf("%c ", symbol);
         printf("%d ", symbol);
           
-        if (new_string == 0){
+        if (new_string == 0) {
             printf("\n");
         }
     }
