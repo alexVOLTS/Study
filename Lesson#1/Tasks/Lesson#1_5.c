@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdint.h>
 #include <float.h>
 #include <stdbool.h>
 
@@ -20,16 +21,17 @@
 #define     JUNE                  6
 #define     SEPTEMBER             9
 #define     NOVEMBER              11
+#define     UNIX_TIME_OFFSET      946684800
     
 void calculate_year(int year, int *sec_year)
 {
-    for (int year_progression = DEFAULT_YEAR; year_progression <= year; year_progression++) {
+    for (int year_progression = DEFAULT_YEAR; year_progression < year; year_progression++) {
         
         if ((year_progression % 4) == 0) {
             (*sec_year) += YEAR_TO_SEC_LEAP;
         }
         else if (((year_progression % 100) == 0) && ((year_progression % 400) == 0)) {
-            (*sec_year) += YEAR_TO_SEC_LEAP;
+            (*sec_year) += YEAR_TO_SEC_LEAP;        
         }
         else {
             (*sec_year) += YEAR_TO_SEC;
@@ -50,14 +52,14 @@ bool is_year_leap(int year)
     }
 }
     
-void calculate_month(int month, int *sec_month, bool *leap)
+void calculate_month(int month, int *sec_month, bool leap)
 {
-    for (int i = 0; i < month; i++) {
+    for (int i = 1; i < month; i++) {
         if (((month - i) == APRIL) || ((month - i) ==  JUNE) || ((month - i) ==  SEPTEMBER) || ((month - i) ==  NOVEMBER)) {
             *sec_month += DAYS_THIRTY;
         }
         else if ((month - i) == FEBRUARY) {
-            if ((*leap) = true) {
+            if (leap == true) {
                 *sec_month += DAYS_FEBRUARY_LEAP;
             }
             else {
@@ -89,10 +91,10 @@ int main(void)
     scanf("%d %d %d %d %d %d", &hour, &minute, &second, &day, &month, &year);
     
     calculate_year(year, &sec_year);
-    is_year_leap(year);
+    leap = is_year_leap(year);
     
     if (month <= MONTHES_IN_YEAR) {
-        calculate_month(month, &sec_month, &leap);
+        calculate_month(month, &sec_month, leap);
     }
     else {
         printf("\nToo many monthes!!!");
@@ -111,6 +113,7 @@ int main(void)
     ntime = (hour * HOUR_TO_SEC) + (minute * MINUTE_TO_SEC) + second + date;
 
     printf ("\nTime in seconds: %d", ntime);
+    printf("\nUnix mktime(): %u", ntime + UNIX_TIME_OFFSET);
 	
 	return 1;
 }
