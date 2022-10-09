@@ -128,6 +128,7 @@ static void enter_car(struct car *car_ptr)
 
 	printf("\nDo you want to enter to the car?");
 	printf("\n1)YES\t\t2)NO\n");
+	scanf("%d", &enter_to_car);
 
 	if (enter_to_car == 1) {
 		car_ptr->enter = true;
