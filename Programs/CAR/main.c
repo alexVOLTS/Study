@@ -58,7 +58,7 @@ static void car_strt(struct car *car_ptr)
 	car_ptr->enter = true;
 
 	while (car_ptr->enter) {
-		check_fuel_overflow(&lada);
-		car_start(&lada);
+		check_fuel_overflow(car_ptr);
+		car_start(car_ptr);
 	}
 }
