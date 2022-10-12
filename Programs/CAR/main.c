@@ -44,7 +44,7 @@ static void car_strt();
 
 /******************************************************************************/
 
-int main()
+int main(void)
 {
 
 	printf("\nWelcome to the brand new RUSSIAN CAR");
