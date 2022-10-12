@@ -35,56 +35,45 @@ struct engine diesel;
 /******************************************************************************/
 /* Private function prototypes ---------------------------------------------- */
 /******************************************************************************/
-
-
+static void on_engine(struct engine *engine_ptr);
+static void off_engine(struct engine *engine_ptr);
 
 /******************************************************************************/
 
 void car_engine_start(struct engine *engine_ptr)
 {
+	if (!engine_ptr->start) {
+		on_engine(engine_ptr);
+	}
+	else {
+		off_engine(engine_ptr);
+	}
+}
+
+static void on_engine(struct engine *engine_ptr)
+{
 	int eng_start;
 
-	if (!engine_ptr->start) {
-		printf("\n\nDo you want to start a car?");
-		printf("\n1)YES\t\t2)NO\n");
-		scanf("%d", &eng_start);
-		if (eng_start == 1) {
-			engine_ptr->start = true;
-		}
-		else {
-			engine_ptr->start = false;
-		}
-	}
-	else {
-		printf("\nEngine is already ON");
-		printf("\nDo you want to off the engine?");
-		printf("\n1)YES\t\t2)NO\n");
-		scanf("%d", &eng_start);
-		if (eng_start == 1) {
-			engine_ptr->start = false;
-		}
-		else {
-			engine_ptr->start = true;
-		}
+	printf("\n\nDo you want to start a car?");
+	printf("\n1)YES\t\t2)NO\n");
+	scanf("%d", &eng_start);
 
-	}
+	engine_ptr->start = eng_start == 1 ? true : false;
+}
 
-	if (engine_ptr->start) {
-		printf("\nStarting...");
-	}
-	else {
-		printf("\n");
-	}
+static void off_engine(struct engine *engine_ptr)
+{
+	int eng_start;
+
+	printf("\nEngine is already ON");
+	printf("\nDo you want to off the engine?");
+	printf("\n1)YES\t\t2)NO\n");
+	scanf("%d", &eng_start);
+
+	engine_ptr->start = eng_start == 1 ? false : true;
 }
 
 int get_temperature(void)
 {
 	return DEFAULT_ENGINE_TEMP;
 }
-
-
-
-
-
-
-
