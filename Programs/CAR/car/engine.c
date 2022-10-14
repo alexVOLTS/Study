@@ -35,22 +35,22 @@ struct engine diesel;
 /******************************************************************************/
 /* Private function prototypes ---------------------------------------------- */
 /******************************************************************************/
-static void on_engine(struct engine *engine_ptr);
-static void off_engine(struct engine *engine_ptr);
+static void activate_engine(struct engine *engine_ptr);
+static void disable_engine(struct engine *engine_ptr);
 
 /******************************************************************************/
 
-void car_engine_start(struct engine *engine_ptr)
+void change_operating_mode_engine(struct engine *engine_ptr)
 {
 	if (!engine_ptr->start) {
-		on_engine(engine_ptr);
+		activate_engine(engine_ptr);
 	}
 	else {
-		off_engine(engine_ptr);
+		disable_engine(engine_ptr);
 	}
 }
 
-static void on_engine(struct engine *engine_ptr)
+static void activate_engine(struct engine *engine_ptr)
 {
 	int eng_start;
 
@@ -61,7 +61,7 @@ static void on_engine(struct engine *engine_ptr)
 	engine_ptr->start = eng_start == 1 ? true : false;
 }
 
-static void off_engine(struct engine *engine_ptr)
+static void disable_engine(struct engine *engine_ptr)
 {
 	int eng_start;
 
