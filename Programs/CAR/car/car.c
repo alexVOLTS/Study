@@ -41,23 +41,35 @@ static void exit_car(struct car *car_ptr);
 static void enter_car(struct car *car_ptr);
 static void buy_fuel(struct car *car_ptr);
 static void drain_fuel(struct car *car_ptr);
+static void check_fuel_overflow(struct car *car_ptr);
+static void start_car(struct car *car_ptr);
 /******************************************************************************/
 
-void car_start(struct car *car_ptr)
+void run_car(struct car *car_ptr)
+{
+	car_ptr->enter = true;
+
+	while (car_ptr->enter) {
+		check_fuel_overflow(car_ptr);
+		start_car(car_ptr);
+	}
+}
+
+static void start_car(struct car *car_ptr)
 {
 	enter_car(car_ptr);
 
 	while (car_ptr->enter) {
-		printf("\nChecking all the systems...");
-		printf("\nFuel...");
+		printf("\n\nChecking all the systems...");
+		printf("\n\nFuel...\n\n");
 
 		if (car_ptr->fuel > TOTAL_TANK_VOLUME) {
 			printf("\nTANK OVERFLOW!");
-			printf("\nDrain the fuel first");
+			printf("\nDrain the fuel first\n");
 			fill_fuel_volume(car_ptr);
 		}
 
-		printf("\n******************************************************************\n\n");
+		printf("\n******************************************************************\n");
 		printf("\nWhat do you want to do?");
 		printf("\n1) Start a car\t\t2) Check fuel volume\t\t3) Check engine temperature\t\t4)EXIT\n");
 		printf("\n******************************************************************\n\n");
@@ -65,14 +77,14 @@ void car_start(struct car *car_ptr)
 
 		switch(car_action) {
 			case 1:
-				car_engine_start(car_ptr->eng_ptr);
+				change_operating_mode_engine(car_ptr->eng_ptr);
 				break;
 			case 2:
 				fill_fuel_volume(car_ptr);
 				break;
 			case 3:
 				car_ptr->eng_ptr->temp = get_temperature();
-				printf("\nEngine temperature is %d degrees Celsius", car_ptr->eng_ptr->temp);
+				printf("\n\nEngine temperature is %d degrees Celsius", car_ptr->eng_ptr->temp);
 				break;
 			case 4:
 				exit_car(car_ptr);
@@ -94,38 +106,40 @@ static void fill_fuel_volume(struct car *car_ptr)
 	switch(gas_tank_status) {
 		case 1:
 			buy_fuel(car_ptr);
-			check_fuel_overflow(car_ptr);
 			break;
 		case 2:
 			drain_fuel(car_ptr);
-			check_fuel_overflow(car_ptr);
 			break;
 		default:
 			printf("\nClosing the fuel tank");
 	}
 }
 
-void check_fuel_overflow(struct car *car_ptr)
+static void check_fuel_overflow(struct car *car_ptr)
 {
 	car_ptr->fuel_overflow_status = car_ptr->fuel > TOTAL_TANK_VOLUME ? true : false;
 }
 
 static void buy_fuel(struct car *car_ptr)
 {
-	printf("\nHow many fuel do you want to buy?");
+	printf("\nHow many fuel do you want to buy?\n");
 	scanf("%d", &fuel_volume_buy);
 
 	car_ptr->fuel += fuel_volume_buy;
+
+	check_fuel_overflow(car_ptr);
 
 	printf("\nNow you have %d liters of fuel", car_ptr->fuel);
 }
 
 static void drain_fuel(struct car *car_ptr)
 {
-	printf("\nHow many fuel do you want to drain?");
+	printf("\nHow many fuel do you want to drain?\n");
 	scanf("%d", &fuel_volume_drain);
 
 	car_ptr->fuel -= fuel_volume_drain;
+
+	check_fuel_overflow(car_ptr);
 
 	printf("\nNow you have %d liters of fuel", car_ptr->fuel);
 }
