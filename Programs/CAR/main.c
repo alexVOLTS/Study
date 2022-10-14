@@ -39,26 +39,14 @@ static struct car lada = {
 /******************************************************************************/
 /* Private function prototypes ---------------------------------------------- */
 /******************************************************************************/
-static void car_strt();
-
 
 /******************************************************************************/
 
 int main(void)
 {
-
 	printf("\nWelcome to the brand new RUSSIAN CAR");
 
-	car_strt(&lada);
+	run_car(&lada);
+
 	return 0;
-}
-
-static void car_strt(struct car *car_ptr)
-{
-	car_ptr->enter = true;
-
-	while (car_ptr->enter) {
-		check_fuel_overflow(car_ptr);
-		car_start(car_ptr);
-	}
 }
