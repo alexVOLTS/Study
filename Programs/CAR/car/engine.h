@@ -37,8 +37,8 @@ extern struct engine diesel;
 /******************************************************************************/
 /* Public functions --------------------------------------------------------- */
 /******************************************************************************/
-extern void change_operating_mode_engine(struct engine *engine_ptr);
-extern int get_temperature(void);
+extern void engine_change_operating_mode(struct engine *engine_ptr);
+extern int engine_get_temperature(void);
 
 
 /******************************************************************************/

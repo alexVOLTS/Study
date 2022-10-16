@@ -40,7 +40,7 @@ static void disable_engine(struct engine *engine_ptr);
 
 /******************************************************************************/
 
-void change_operating_mode_engine(struct engine *engine_ptr)
+void engine_change_operating_mode(struct engine *engine_ptr)
 {
 	if (!engine_ptr->start) {
 		activate_engine(engine_ptr);
@@ -73,7 +73,7 @@ static void disable_engine(struct engine *engine_ptr)
 	engine_ptr->start = eng_start == 1 ? false : true;
 }
 
-int get_temperature(void)
+int engine_get_temperature(void)
 {
 	return DEFAULT_ENGINE_TEMP;
 }
