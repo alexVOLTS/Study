@@ -24,7 +24,7 @@
 /* Private defines ---------------------------------------------------------- */
 /******************************************************************************/
 
-#define DEFAULT_ENGINE_TEMP    25u
+#define ENGINE_DEFAULT_TEMP    25u
 
 /******************************************************************************/
 /* Private variables -------------------------------------------------------- */
@@ -75,5 +75,5 @@ static void disable_engine(struct engine *engine_ptr)
 
 int engine_get_temperature(void)
 {
-	return DEFAULT_ENGINE_TEMP;
+	return ENGINE_DEFAULT_TEMP;
 }

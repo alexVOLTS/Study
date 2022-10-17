@@ -39,9 +39,10 @@ struct car {
 /* Public functions --------------------------------------------------------- */
 /******************************************************************************/
 extern void car_exit(struct car *car_ptr);
+extern void car_enter(struct car *car_ptr);
 extern void car_drain_fuel(struct car *car_ptr);
 extern void car_buy_fuel(struct car *car_ptr);
-extern void car_check_fuel_overflow(struct car *car_ptr);
+extern bool car_check_fuel_overflow(struct car *car_ptr);
 /******************************************************************************/
 
 #ifdef __cplusplus
