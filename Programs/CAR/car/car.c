@@ -37,9 +37,11 @@ int fuel_volume_buy, fuel_volume_drain, eng_temp;
 /******************************************************************************/
 /******************************************************************************/
 
-void car_check_fuel_overflow(struct car *car_ptr)
+bool car_check_fuel_overflow(struct car *car_ptr)
 {
 	car_ptr->fuel_overflow_status = car_ptr->fuel > CAR_TOTAL_TANK_VOLUME ? true : false;
+
+	return car_ptr->fuel_overflow_status;
 }
 
 void car_buy_fuel(struct car *car_ptr)
@@ -50,8 +52,6 @@ void car_buy_fuel(struct car *car_ptr)
 	car_ptr->fuel += fuel_volume_buy;
 
 	car_check_fuel_overflow(car_ptr);
-
-	printf("\nNow you have %d liters of fuel", car_ptr->fuel);
 }
 
 void car_drain_fuel(struct car *car_ptr)
@@ -62,12 +62,14 @@ void car_drain_fuel(struct car *car_ptr)
 	car_ptr->fuel -= fuel_volume_drain;
 
 	car_check_fuel_overflow(car_ptr);
+}
 
-	printf("\nNow you have %d liters of fuel", car_ptr->fuel);
+void car_enter(struct car *car_ptr)
+{
+	car_ptr->enter = true;
 }
 
 void car_exit(struct car *car_ptr)
 {
-	printf("\nExiting from the car...");
 	car_ptr->enter = false;
 }

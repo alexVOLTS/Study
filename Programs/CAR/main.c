@@ -35,7 +35,7 @@ static struct car lada = {
 /******************************************************************************/
 /* Private function prototypes ---------------------------------------------- */
 /******************************************************************************/
-static bool enter_car(struct car *car_ptr);
+static bool get_in_the_car(struct car *car_ptr);
 static void run_car(struct car *car_ptr);
 static void start_car(struct car *car_ptr);
 static void fill_fuel_volume(struct car *car_ptr);
@@ -45,16 +45,17 @@ int main(void)
 {
 	printf("\nWelcome to the brand new RUSSIAN CAR");
 
-	if (!enter_car(&lada)) {
+	if (!get_in_the_car(&lada)) {
 		return 0;
 	}
 
+	printf("\nEntering the car...\n\n");
 	run_car(&lada);
 
 	return 0;
 }
 
-static bool enter_car(struct car *car_ptr)
+static bool get_in_the_car(struct car *car_ptr)
 {
 	int enter_to_car = 0;
 
@@ -63,14 +64,15 @@ static bool enter_car(struct car *car_ptr)
 	scanf("%d", &enter_to_car);
 
 	if (enter_to_car != 1) {
-		car_ptr->enter = false;
+		printf("\nExiting from the car...");
+
+		car_exit(car_ptr);
+
 		return false;
 	}
 
-	car_ptr->enter = true;
+	car_enter(car_ptr);
 	return true;
-
-	//car_ptr->enter = enter_to_car == 1 ? true : false;
 }
 
 static void run_car(struct car *car_ptr)
@@ -91,7 +93,7 @@ static void start_car(struct car *car_ptr)
 		printf("\n\nChecking all the systems...");
 		printf("\n\nFuel...\n\n");
 
-		if (car_ptr->fuel > CAR_TOTAL_TANK_VOLUME) {
+		if (car_check_fuel_overflow(car_ptr)) {
 			printf("\nTANK OVERFLOW!");
 			printf("\nDrain the fuel first\n");
 			fill_fuel_volume(car_ptr);
@@ -136,9 +138,11 @@ static void fill_fuel_volume(struct car *car_ptr)
 	switch(gas_tank_status) {
 		case 1:
 			car_buy_fuel(car_ptr);
+			printf("\nNow you have %d liters of fuel", car_ptr->fuel);
 			break;
 		case 2:
 			car_drain_fuel(car_ptr);
+			printf("\nNow you have %d liters of fuel", car_ptr->fuel);
 			break;
 		default:
 			printf("\nClosing the fuel tank");
