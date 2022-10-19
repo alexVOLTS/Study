@@ -73,7 +73,9 @@ static void disable_engine(struct engine *engine_ptr)
 	engine_ptr->start = eng_start == 1 ? false : true;
 }
 
-int engine_get_temperature(void)
+int engine_get_temperature(struct engine *engine_ptr)
 {
-	return ENGINE_DEFAULT_TEMP;
+	engine_ptr->temp = ENGINE_DEFAULT_TEMP;
+
+	return engine_ptr->temp;
 }
