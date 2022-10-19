@@ -113,7 +113,7 @@ static void start_car(struct car *car_ptr)
 				fill_fuel_volume(car_ptr);
 				break;
 			case 3:
-				car_ptr->eng_ptr->temp = engine_get_temperature();
+				engine_get_temperature(car_ptr->eng_ptr);
 				printf("\n\nEngine temperature is %d degrees Celsius", car_ptr->eng_ptr->temp);
 				break;
 			case 4:
