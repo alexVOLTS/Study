@@ -1,0 +1,5 @@
+*.o
+/Debug/*.o
+/Debug/event/*.o
+/.settings/*.xml
+/.settings/*.prefs
