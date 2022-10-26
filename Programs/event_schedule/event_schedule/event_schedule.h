@@ -39,7 +39,8 @@ struct time
 /******************************************************************************/
 extern bool event_time_check_start(struct time schedule);
 extern bool event_time_check_end(struct time schedule);
-extern bool event_triggered(struct time *schedule_ptr);
+extern bool event_triggered_transition(struct time *schedule_ptr);
+extern bool event_triggered_transitionless(struct time *schedule_ptr);
 extern bool event_zero_point(struct time *schedule_ptr);
 /******************************************************************************/
 

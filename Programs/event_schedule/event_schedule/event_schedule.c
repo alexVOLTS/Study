@@ -22,9 +22,10 @@
 /******************************************************************************/
 /* Private defines ---------------------------------------------------------- */
 /******************************************************************************/
-#define EVENT_CHECK(x,y)    			((((x) > 24) || ((y) > 60)) ? (false) : (true))
-#define EVENT_TIME_MINS(x,y,a,b,c,d)    ((((((x) * 60) + (y)) >= (((a) * 60) + (b))) && ((((x) * 60) + (y)) <= (((c) * 60) + (d)))) ? (true) : (false))
-#define EVENT_ZERO_POINT(x,y)    		(((x) == 0) && ((y) == 0) ? (true) : (false))
+#define EVENT_CHECK(x,y)    			    ((((x) > 24) || ((y) > 60)) ? (false) : (true))
+#define EVENT_TIME_MINS_TRANSITION(x,y,a,b,c,d)    ((((((((x) * 60) + (y)) <= (((a) * 60) + (b))) && ((((x) * 60) + (y)) <= (((c) * 60) + (d))))) || ((((((x) * 60) + (y)) >= (((a) * 60) + (b))) && ((((x) * 60) + (y)) >= (((c) * 60) + (d)))))) ? (true) : (false))
+#define EVENT_TIME_MINS_TRANSITIONLESS(x,y,a,b,c,d)    ((((((x) * 60) + (y)) >= (((a) * 60) + (b))) && ((((x) * 60) + (y)) <= (((c) * 60) + (d)))) ? (true) : (false))
+#define EVENT_ZERO_POINT(x,y)    		    (((x) == 0) && ((y) == 0) ? (true) : (false))
 /******************************************************************************/
 /* Private variables -------------------------------------------------------- */
 /******************************************************************************/
@@ -43,9 +44,14 @@ bool event_time_check_end(struct time schedule)
 	return EVENT_CHECK(schedule.end_time.hour, schedule.end_time.min);
 }
 
-bool event_triggered(struct time *schedule_ptr)
+bool event_triggered_transition(struct time *schedule_ptr)
 {
-	return EVENT_TIME_MINS(schedule_ptr->current_time.hour, schedule_ptr->current_time.min, schedule_ptr->start_time.hour, schedule_ptr->start_time.min, schedule_ptr->end_time.hour, schedule_ptr->end_time.min);
+	return EVENT_TIME_MINS_TRANSITION(schedule_ptr->current_time.hour, schedule_ptr->current_time.min, schedule_ptr->start_time.hour, schedule_ptr->start_time.min, schedule_ptr->end_time.hour, schedule_ptr->end_time.min);
+}
+
+bool event_triggered_transitionless(struct time *schedule_ptr)
+{
+	return EVENT_TIME_MINS_TRANSITIONLESS(schedule_ptr->current_time.hour, schedule_ptr->current_time.min, schedule_ptr->start_time.hour, schedule_ptr->start_time.min, schedule_ptr->end_time.hour, schedule_ptr->end_time.min);
 }
 
 bool event_zero_point(struct time *schedule_ptr)
