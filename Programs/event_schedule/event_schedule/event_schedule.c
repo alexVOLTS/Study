@@ -1,6 +1,6 @@
 /**
  ******************************************************************************
- * @file           : event/event.c
+ * @file           : event/event_schedule.c
  * @author         : Alexandr Shabalin    <shabalin@voltsbattery.com>
  * @brief          : Event functions
  ******************************************************************************
@@ -18,7 +18,7 @@
 #include <float.h>
 #include <stdbool.h>
 
-#include "event.h"
+#include "event_schedule.h"
 /******************************************************************************/
 /* Private defines ---------------------------------------------------------- */
 /******************************************************************************/
@@ -35,20 +35,20 @@
 
 bool event_time_check_start(struct time schedule)
 {
-	return EVENT_CHECK(schedule.start_hour, schedule.start_min);
+	return EVENT_CHECK(schedule.start_time.hour, schedule.start_time.min);
 }
 
 bool event_time_check_end(struct time schedule)
 {
-	return EVENT_CHECK(schedule.end_hour, schedule.end_min);
+	return EVENT_CHECK(schedule.end_time.hour, schedule.end_time.min);
 }
 
-bool event_triggered(struct time schedule)
+bool event_triggered(struct time *schedule_ptr)
 {
-	return EVENT_TIME_MINS(schedule.current_hour, schedule.current_min, schedule.start_hour, schedule.start_min, schedule.end_hour, schedule.end_min);
+	return EVENT_TIME_MINS(schedule_ptr->current_time.hour, schedule_ptr->current_time.min, schedule_ptr->start_time.hour, schedule_ptr->start_time.min, schedule_ptr->end_time.hour, schedule_ptr->end_time.min);
 }
 
-bool event_zero_point(struct time schedule)
+bool event_zero_point(struct time *schedule_ptr)
 {
-	return EVENT_ZERO_POINT(schedule.current_hour, schedule.current_min);
+	return EVENT_ZERO_POINT(schedule_ptr->current_time.hour, schedule_ptr->current_time.min);
 }
