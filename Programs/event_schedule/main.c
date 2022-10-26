@@ -62,16 +62,32 @@ static void run_schedule(struct time *schedule_ptr)
 		end_check = event_time_check_end(schedule);
 	}
 
-	while(!zero_check) {
-		printf("\nInput current time HH:MM format: \n");
-		scanf("%d%d", &schedule_ptr->current_time.hour, &schedule_ptr->current_time.min);
+	if (schedule_ptr->start_time.hour > schedule_ptr->end_time.hour) {
+		while(!zero_check) {
+			printf("\nInput current time HH:MM format: \n");
+			scanf("%d%d", &schedule_ptr->current_time.hour, &schedule_ptr->current_time.min);
 
-		zero_check = event_zero_point(&schedule);
+			zero_check = event_zero_point(&schedule);
 
-		event_trigger = event_triggered(&schedule);
+			event_trigger = event_triggered_transition(&schedule);
 
-		if (event_trigger) {
-			printf("\n\n\t\t\t\t\tEVENT HAS TRIGGERED!!!\n\n");
+			if (event_trigger) {
+				printf("\n\n\t\t\t\t\tEVENT HAS TRIGGERED!!!\n\n");
+			}
+		}
+	}
+	else {
+		while(!zero_check) {
+			printf("\nInput current time HH:MM format: \n");
+			scanf("%d%d", &schedule_ptr->current_time.hour, &schedule_ptr->current_time.min);
+
+			zero_check = event_zero_point(&schedule);
+
+			event_trigger = event_triggered_transitionless(&schedule);
+
+			if (event_trigger) {
+				printf("\n\n\t\t\t\t\tEVENT HAS TRIGGERED!!!\n\n");
+			}
 		}
 	}
 }
