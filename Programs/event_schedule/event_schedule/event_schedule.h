@@ -22,23 +22,25 @@ extern "C" {
 /******************************************************************************/
 /* Public variables --------------------------------------------------------- */
 /******************************************************************************/
-struct time {
-	int start_min;
-	int start_hour;
+struct event_schedule_time
+{
+	int hour;
+	int min;
+};
 
-	int end_min;
-	int end_hour;
-
-	int current_min;
-	int current_hour;
+struct time
+{
+	struct event_schedule_time current_time;
+	struct event_schedule_time start_time;
+	struct event_schedule_time end_time;
 };
 /******************************************************************************/
 /* Public functions --------------------------------------------------------- */
 /******************************************************************************/
 extern bool event_time_check_start(struct time schedule);
 extern bool event_time_check_end(struct time schedule);
-extern bool event_triggered(struct time schedule);
-extern bool event_zero_point(struct time schedule);
+extern bool event_triggered(struct time *schedule_ptr);
+extern bool event_zero_point(struct time *schedule_ptr);
 /******************************************************************************/
 
 #ifdef __cplusplus
