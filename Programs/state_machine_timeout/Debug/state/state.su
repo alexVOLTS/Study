@@ -1,0 +1,15 @@
+../st/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:881:22:LL_GPIO_SetOutputPin	16	static
+../st/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h:910:22:LL_GPIO_ResetOutputPin	16	static
+../state/state.c:23:6:state_run	8	static
+../state/state.c:28:6:state_top_init	8	static
+../state/state.c:33:6:state_top_deinit	8	static
+../state/state.c:38:6:state_bottom_init	8	static
+../state/state.c:43:6:state_bottom_deinit	8	static
+../state/state.c:48:6:state_left_init	8	static
+../state/state.c:53:6:state_left_deinit	8	static
+../state/state.c:58:6:state_right_init	8	static
+../state/state.c:63:6:state_right_deinit	8	static
+../state/state.c:68:6:state_top_check	16	static
+../state/state.c:73:6:state_bottom_check	16	static
+../state/state.c:78:6:state_right_check	16	static
+../state/state.c:83:6:state_left_check	16	static
