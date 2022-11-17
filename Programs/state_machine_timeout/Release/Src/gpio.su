@@ -1,2 +1,2 @@
 ../st/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h:409:22:LL_AHB1_GRP1_EnableClock	8	static
-../Src/gpio.c:42:6:MX_GPIO_Init	32	static
+../Src/gpio.c:42:6:MX_GPIO_Init	40	static

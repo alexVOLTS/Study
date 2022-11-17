@@ -22,92 +22,111 @@
 #include "gpio.h"
 #include "state.h"
 
-//#define CURRENT_STATE_0     (led_chain_ptr->current_state == STATE_0)
-//#define CURRENT_STATE_1	    (led_chain_ptr->current_state == STATE_1)
-//#define CURRENT_STATE_2     (led_chain_ptr->current_state == STATE_2)
-//#define CURRENT_STATE_3     (led_chain_ptr->current_state == STATE_3)
-//#define PREVIOUS_STATE_0    (led_chain_ptr->previous_state == STATE_0)
-//#define PREVIOUS_STATE_1    (led_chain_ptr->previous_state == STATE_1)
-//#define PREVIOUS_STATE_2    (led_chain_ptr->previous_state == STATE_2)
-//#define PREVIOUS_STATE_3    (led_chain_ptr->previous_state == STATE_3)
+#define PREVIOUS_STATE    led_chain_ptr->previous_state
+#define CURRENT_STATE     led_chain_ptr->current_state
+#define RESET_STATE       led_chain_ptr->reset
 
 static void SystemClock_Config(void);
 static void Initialize_MCU(void);
 static void activate_state_machine(struct state_machine *led_chain_ptr);
+static void perform_state_machine(struct state_machine *led_chain_ptr);
+static void perform_state_top(struct state_machine *led_chain_ptr);
+static void perform_state_bottom(struct state_machine *led_chain_ptr);
+static void perform_state_right(struct state_machine *led_chain_ptr);
+static void perform_state_left(struct state_machine *led_chain_ptr);
 
 static struct state_machine led_chain;
 
 int main(void)
 {
 	Initialize_MCU();
-	//led_chain_ptr->current_state = STATE_0;
-	//led_chain_ptr->previous_state == STATE_0;
 
 	while(1) {
 		activate_state_machine(&led_chain);
+		perform_state_machine(&led_chain);
 	}
 }
 
 static void activate_state_machine(struct state_machine *led_chain_ptr)
 {
-	led_chain_ptr->current_state = STATE_0;
-	led_chain_ptr->previous_state = STATE_0;
-	led_chain_ptr->reset = false;
+	CURRENT_STATE = STATE_0;
+	PREVIOUS_STATE = STATE_0;
+	RESET_STATE = false;
+}
 
-	while(1){
+static void perform_state_machine(struct state_machine *led_chain_ptr)
+{
+	while(1) {
 		if (state_top_check(led_chain)) {
-
-			state_top_init();
-			state_run();
-			state_top_deinit();
-
-			led_chain_ptr->current_state = STATE_1;
-
-			if (led_chain_ptr->previous_state == STATE_2) {
-				led_chain_ptr->current_state = STATE_3;
-			}
-			else if (led_chain_ptr->previous_state == STATE_3) {
-				led_chain_ptr->current_state = STATE_1;
-				led_chain_ptr->reset = true;
-			}
-
-			led_chain_ptr->previous_state = STATE_0;
+			perform_state_top(&led_chain);
 		}
 
 		else if (state_bottom_check(led_chain)) {
-			state_bottom_init();
-			state_run();
-			state_bottom_deinit();
+			perform_state_bottom(&led_chain);
 
-			led_chain_ptr->previous_state = STATE_1;
-
-			if (led_chain_ptr->reset) {
+			if (RESET_STATE) {
 				break;
 			}
-
-			led_chain_ptr->current_state = STATE_2;
+			CURRENT_STATE = STATE_2;
 		}
 
 		else if (state_right_check(led_chain)) {
-			state_right_init();
-			state_run();
-			state_right_deinit();
-
-			led_chain_ptr->previous_state = STATE_2;
-			led_chain_ptr->current_state = STATE_0;
+			perform_state_right(&led_chain);
 		}
 
 		else if (state_left_check(led_chain)) {
-			state_left_init();
-			state_run();
-			state_left_deinit();
-
-			led_chain_ptr->previous_state = STATE_3;
-			led_chain_ptr->current_state = STATE_0;
+			perform_state_left(&led_chain);
 		}
 	}
 }
 
+static void perform_state_top(struct state_machine *led_chain_ptr)
+{
+	state_top_init();
+	state_run();
+	state_top_deinit();
+
+	CURRENT_STATE = STATE_1;
+
+	if (PREVIOUS_STATE == STATE_2) {
+		CURRENT_STATE = STATE_3;
+	}
+	else if (PREVIOUS_STATE == STATE_3) {
+		CURRENT_STATE = STATE_1;
+		RESET_STATE = true;
+	}
+
+	PREVIOUS_STATE = STATE_0;
+}
+
+static void perform_state_bottom(struct state_machine *led_chain_ptr)
+{
+	state_bottom_init();
+	state_run();
+	state_bottom_deinit();
+
+	PREVIOUS_STATE = STATE_1;
+}
+
+static void perform_state_right(struct state_machine *led_chain_ptr)
+{
+	state_right_init();
+	state_run();
+	state_right_deinit();
+
+	PREVIOUS_STATE = STATE_2;
+	CURRENT_STATE = STATE_0;
+}
+
+static void perform_state_left(struct state_machine *led_chain_ptr)
+{
+	state_left_init();
+	state_run();
+	state_left_deinit();
+
+	PREVIOUS_STATE = STATE_3;
+	CURRENT_STATE = STATE_0;
+}
 
 static void Initialize_MCU(void)
 {
