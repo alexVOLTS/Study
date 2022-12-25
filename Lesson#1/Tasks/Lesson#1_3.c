@@ -3,51 +3,85 @@
 #include <stdbool.h>
 #include <string.h>
 
+int romanToInt(char *s);
 
-int ch(char);
-
-int translator(char a)
+int romanToInt(char *s) 
 {
-    int value = 0;
-    
-    if (a == 'I') return 1;
-    if (a == 'V') return 5;
-    if (a == 'X') return 10;
-    if (a == 'L') return 50;
-    if (a == 'C') return 100;
-    if (a == 'D') return 500;
-    if (a == 'M') return 1000;
-    return -1;
-}
+    char *s_ptr = s;
+    int num = 0;
 
-int converter(char *number)
-{
-    int result = 0;
-    
-    for (int i = 0; i < strlen(number); i++)
-    {
-        int symbol_1 = translator(number[i]);
-        
-        if (i + 1 < strlen(number))
-        {
-            int symbol_2 = translator(number[i + 1]);
-            
-            if (symbol_1 >= symbol_2)
-            {
-                result += symbol_1;
+    for (;*s_ptr != '\0'; s_ptr++) {
+        switch (*s_ptr) {
+            case 'I':
+                switch (*(s_ptr + 1)) {
+                    case 'I':
+                        num += 1;
+                        break;
+                    case 'V':
+                        num += 4;
+                        s_ptr++;
+                        break;
+                    case 'X':
+                        num += 9;
+                        s_ptr++;
+                        break;
+                    default:
+                        num += 1;
+                        break;
+                }
+                break;
+            case 'V':
+                num += 5;
+                break;
+            case 'X':
+                switch (*(s_ptr + 1)) {
+                    case 'L':
+                        num += 40;
+                        s_ptr++;
+                        break;
+                    case 'C':
+                        num += 90;
+                        s_ptr++;
+                        break;
+                    case 'X':
+                        num += 10;
+                        break;
+                    default:
+                        num += 10;
+                        break;
+                }
+                break;
+            case 'L':
+                num += 50;
+                break;
+            case 'C': 
+                switch(*(s_ptr + 1)) {
+                    case 'D':
+                        num += 400;
+                        s_ptr++;
+                        break;
+                    case 'M':
+                        num += 900;
+                        s_ptr++;
+                        break;
+                    case 'C':
+                        num += 100;
+                        break;
+                    default:
+                        num += 100;
+                        break;
             }
-            else
-            {
-                result += symbol_2 - symbol_1;
-                i++;
-            }
-        }
-        else
-        {
-            result++;
+                break;
+            case 'D':
+                num += 500;
+                break;
+            case 'M':
+                num += 1000;
+                break;
         }
     }
-    return result;
+
+    return num;
 }
 
 int main(void)
@@ -55,7 +89,7 @@ int main(void)
     char number[20];
     printf("\nEnter roman number:");
     scanf("%s", &number);
-    printf("Value is: %d", converter(number));
+    printf("Value is: %d", romanToInt(number));
     
     return 0;
 }
