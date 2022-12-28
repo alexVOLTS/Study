@@ -1,41 +1,51 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <float.h>
 #include <stdbool.h>
+#include <string.h>
 
-int translator(void)
+#define ROMAN_SYMBOLS_COUNT    13u
+
+typedef struct {
+    int integer_num;
+    char *roman_symbol;
+} roman_num;
+
+char *intToRoman(int num)
 {
-    int x[13] = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
-    char y[13][3] = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
-    unsigned int z;
-
-    printf("\nInput number:");
-    scanf("%d", &z);
+    char *result = (char *)malloc(sizeof(char) * 50);
+    result[0] = '\0';
     
-    int number = z;
+    roman_num roman_num_arr[ROMAN_SYMBOLS_COUNT] = {{1, "I"}, {4, "IV"}, {5, "V"}, {9, "IX"}, {10, "X"}, {40, "XL"}, {50, "L"}, {90, "XC"}, {100, "C"}, {400, "CD"}, {500, "D"}, {900, "CM"}, {1000, "M"}};
+	
+	int ratio = 0;	
 		
-    if (z < 1 || z > 3999)
-    {
-        printf("\nNumber must be in a range 1 - 3999");
+    if (num < 1 || num > 3999) {
         return 0;
     }
-    if (number == 0)
-    {
-        printf("\nN");
+    
+    if (num == 0) {
         return 0;
     }
-    for (int i = 0; i < 13; i++)
-    {
-        while (z >= x[i])
-        {
-            printf("%s", y[i]);
-            z -= x[i];
+
+    for (int i = ROMAN_SYMBOLS_COUNT - 1; i >= 0; i--) {
+        ratio = num / roman_num_arr[i].integer_num;
+        while (ratio > 0) {
+            strcat(result, roman_num_arr[i].roman_symbol);
+            ratio--;
         }
+        num = num % roman_num_arr[i].integer_num;
     }
-    return 1;
+    
+    return result;
 }
 
-int main(void)
+int main()
 {
-    translator();
+    char *res;
+    
+    res = intToRoman(58);
+    printf("Result: %s\n", res);
+
     return 0;
 }
