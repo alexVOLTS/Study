@@ -34,3 +34,12 @@
 [submodule "Programs/mircroRL_stm32/firmware/lib/lwprintf"]
 	path = Programs/mircroRL_stm32/firmware/lib/lwprintf
 	url = https://github.com/alexVOLTS/lwprintf.git
+[submodule "Programs/mircroRL_stm32/firmware/Src/st/cmsis_core"]
+	path = Programs/mircroRL_stm32/firmware/Src/st/cmsis_core
+	url = https://github.com/STMicroelectronics/cmsis_core.git
+[submodule "Programs/mircroRL_stm32/firmware/Src/st/cmsis_device_f4"]
+	path = Programs/mircroRL_stm32/firmware/Src/st/cmsis_device_f4
+	url = https://github.com/STMicroelectronics/cmsis_device_f4.git
+[submodule "Programs/mircroRL_stm32/firmware/Src/st/stm32f4xx_hal_driver"]
+	path = Programs/mircroRL_stm32/firmware/Src/st/stm32f4xx_hal_driver
+	url = https://github.com/STMicroelectronics/stm32f4xx_hal_driver.git
